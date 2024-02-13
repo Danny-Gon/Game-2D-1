@@ -9,23 +9,18 @@ public class Move : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spritePlayer;
-
-    private SwordAttack swordAttack;
-
+     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         spritePlayer = GetComponentInChildren<SpriteRenderer>();
-        swordAttack = GetComponentInChildren<SwordAttack>();
     }
 
 
     private void FixedUpdate()
     {
-        MovePlayer();
-
-        Attack();
+        MovePlayer();      
     }
 
     private void MovePlayer()
@@ -44,10 +39,5 @@ public class Move : MonoBehaviour
         {
             spritePlayer.flipX = true;
         }
-    }
-
-    private void Attack()
-    {
-      
     }
 }
