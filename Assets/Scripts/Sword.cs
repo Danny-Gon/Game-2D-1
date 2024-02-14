@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttack : MonoBehaviour
+public class Sword : MonoBehaviour
 {
-    private BoxCollider2D colSword;
-    public static Animator SwordAnim;
-
-    // SwordAttack.SwordAnim
+    public BoxCollider2D colSword;
 
     private void Awake()
     {
@@ -16,8 +13,9 @@ public class SwordAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D otro)
     {
-        if (otro.CompareTag("Zombie"))
+        if(otro.CompareTag("Zombie"))
         {
+            Debug.Log("Hit");
             Destroy(otro.gameObject);
         }
     }
