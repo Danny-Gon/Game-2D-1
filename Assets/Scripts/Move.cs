@@ -12,6 +12,9 @@ public class Move : MonoBehaviour
     private SpriteRenderer spritePlayer;
     private float posColX = 1;
     private float posColY = 0;
+
+    private int life = 3;
+    [SerializeField] UIManager uiManager;
     
     private void Awake()
     {
@@ -25,6 +28,10 @@ public class Move : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("Attack");
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Damage();
         }
     }
 
@@ -52,5 +59,25 @@ public class Move : MonoBehaviour
             spritePlayer.flipX = true;
         }
     }
-    
+
+    private void Damage()
+    {
+        if(life > 0)
+        {
+            life--;
+            uiManager.RestaLife(life);
+
+            if (life == 0)
+            {
+                animator.SetTrigger("Dead");
+                Invoke(nameof(Dead), 1.5f);
+            }
+        }
+    }
+
+    private void Dead()
+    {
+        Destroy(this.gameObject);
+    }
+
 }
