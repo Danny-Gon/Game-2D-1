@@ -8,11 +8,12 @@ public class Zombie : MonoBehaviour
     public Transform player;
     private NavMeshAgent agent;
     private SpriteRenderer sprite;
+    private Transform objetivo;
     
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
@@ -24,7 +25,8 @@ public class Zombie : MonoBehaviour
 
     private void Update()
     {
-        agent.SetDestination(player.position);        
+        agent.SetDestination(player.position);
+        objetivo = player;
     }
 
     private void Reset()
