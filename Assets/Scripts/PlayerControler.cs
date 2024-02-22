@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class PlayerControler : MonoBehaviour
 {
     [SerializeField]private float speed;
     [SerializeField] private BoxCollider2D colSword;
@@ -60,7 +60,7 @@ public class Move : MonoBehaviour
         }
     }
 
-    private void Damage()
+    public void Damage()
     {
         if(life > 0)
         {

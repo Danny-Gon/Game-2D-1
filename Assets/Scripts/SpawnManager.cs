@@ -5,11 +5,16 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemy;
-    public Transform spawnPoint;
+    public Transform[] spawnPoints;
+       
 
     private void Start()
     {
         print("Spawn Enemy");
-        Instantiate(enemy,spawnPoint);
+        
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            Instantiate(enemy, spawnPoint);
+        }
     }
 }

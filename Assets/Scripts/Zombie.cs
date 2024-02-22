@@ -9,12 +9,6 @@ public class Zombie : MonoBehaviour
     private NavMeshAgent agent;
     private SpriteRenderer sprite;
     private Transform objetivo;
-    
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
-    }
 
     private void Start()
     {
@@ -23,21 +17,32 @@ public class Zombie : MonoBehaviour
         agent.updateUpAxis = false;
     }
 
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        
+       
+    }
+        
     private void Update()
     {
         agent.SetDestination(player.position);
         objetivo = player;
+        RotarZombie();
     }
 
-    private void Reset()
+    void RotarZombie()
     {
-        if (this.transform.position.x > player.position.x)
+        if (this.transform.position.x > objetivo.position.x)
         {
             sprite.flipX = true;
+            //transform.localScale = new Vector2(-1, 1);
         }
         else
         {
             sprite.flipX = false;
+            //transform.localScale = new Vector2(1, 1);
         }
     }
 }
