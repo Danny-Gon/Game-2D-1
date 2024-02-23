@@ -7,16 +7,23 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemy;
     public Transform[] spawnPoints;
     public int spawnCount = 10; //Contador de rondas
-    public float timeBetweenRounds = 5f;
+    public float timeBetweenRounds = 100f;
 
     private int spawnT = 0; //Ronda actual
-    private bool spawning = false;
+    [HideInInspector] public bool spawning = false;
 
     private void Start()
     {
         StartCoroutine(SpawnRounds());
     }
 
+    private void Update()
+    {   
+        if(spawning == true) 
+        { 
+        StartCoroutine(SpawnRounds());
+        }
+    }
     private IEnumerator SpawnRounds()
     {
         spawning = true;
@@ -44,15 +51,15 @@ public class SpawnManager : MonoBehaviour
                     enemigo.transform.position = enemigo.transform.position + offset;
             }
         }
+        spawning = false;
         
         yield return new WaitForSeconds(timeBetweenRounds);
-        spawnT++;             
+        spawnT++;
+        spawning = true;
     }
 
     private void LateUpdate()
     {
         spawnT = spawnCount;
-        spawning = false;
     }
-
 }

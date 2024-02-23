@@ -40086,6 +40086,7 @@ MonoBehaviour:
   - {fileID: 1538874252}
   spawnCount: 1
   timeBetweenRounds: 5
+  spawning: 0
 --- !u!4 &1267748858
 Transform:
   m_ObjectHideFlags: 0
